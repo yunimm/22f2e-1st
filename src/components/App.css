@@ -43,7 +43,21 @@
 }
 #et {
   position: absolute;
-  scale: 0.58;
-  top: 93px;
-  right: 559px;
+  top: 316px;
+  right: 606px;
+}
+#button {
+  position: absolute;
+  top: 855px;
+  right: 30px;
+  width: 180px;
+  height: 75px;
+  background-image: url(../assets//PNG/btn_sm_1.png);
+  background-repeat: no-repeat;
+}
+#button:hover {
+  background-image: url(../assets//PNG/btn_sm_2.png);
+}
+#button:active {
+  background-image: url(../assets//PNG/btn_sm_3.png);
 }

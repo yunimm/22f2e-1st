@@ -23,6 +23,7 @@ function App() {
             <img id="et" src={et} alt="et on screen" />
           </div>
         </div>
+        <button id="button" />
       </div>
     </div>
   );
