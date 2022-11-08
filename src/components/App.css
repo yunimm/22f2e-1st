@@ -1,24 +1,49 @@
-.box {
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: greenyellow;
-  font-weight: 600;
-  color: var(--light);
+#header {
+  /* opacity: 0.5; */
+  width: 100%;
+  min-height: 80px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(192, 206, 234, 0.3) 100%
+  );
+  backdrop-filter: blur(2px);
 }
-.App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  height: 2000px;
+#bg {
   position: relative;
+  height: 13138px;
+  width: 100%;
+  background-image: url(../assets//PNG//bg_sky.png);
+  background-position: center;
 }
-.animate3 {
+#sun {
   position: absolute;
-  bottom: 400px;
+  top: 180px;
+  left: 465px;
+}
+#logo_main {
+  position: absolute;
+  top: 310px;
+  left: 640px;
+}
+#cloud_sm {
+  position: absolute;
+  top: 595px;
+  left: 197px;
+}
+#cloud_xl {
+  position: absolute;
+  top: 480px;
+  right: 111px;
+}
+#ufo_wrapper {
+  position: absolute;
+  top: 600px;
+  right: 346px;
+}
+#et {
+  position: absolute;
+  scale: 0.58;
+  top: 93px;
+  right: 559px;
 }
