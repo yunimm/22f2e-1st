@@ -70,7 +70,19 @@ function App() {
             <img src={window} alt="window on screen" />
           </div>
         </div>
-
+        {/* shot4 */}
+        <div className="shot4">
+          <div className="w-full px-12 flex justify-between">
+            <img src={window} alt="window on screen" />
+            <img src={window} alt="window on screen" />
+          </div>
+          <div className="flex items-center">
+            <p className="w-[370px] h-[133px] bg-black rounded-xl text-white text-center leading-[133px] text-4xl">
+              *&@&%#&#
+            </p>
+            <div className="triangle" />
+          </div>
+        </div>
         {/* end */}
         <div className="shot-end">
           <button type="button" id="button_xl" />
