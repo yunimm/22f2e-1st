@@ -12,9 +12,11 @@ import {
   coin_color,
   tree_black,
   tree_color,
+  window,
 } from './AllPng';
 import { et, elf, ufo_gif } from './AllGif';
 import { ufo_sm } from './AllSvg.js';
+import ufo_inside1 from '../assets/SVG/ufo_inside.svg';
 function App() {
   return (
     <div className="App">
@@ -59,7 +61,16 @@ function App() {
           </div>
         </div>
         {/* shot3 */}
-        <div className="shot3 bg-green-500 bg-opacity-50"></div>
+        <div className="shot3 bg-green-500 bg-opacity-50 ">
+          <div className="text-bg">
+            <span>互動式網頁設計</span>
+          </div>
+          <div className="w-full px-12 flex justify-between">
+            <img src={window} alt="window on screen" />
+            <img src={window} alt="window on screen" />
+          </div>
+        </div>
+
         {/* end */}
         <div className="shot-end">
           <button type="button" id="button_xl" />

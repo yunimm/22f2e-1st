@@ -10,6 +10,7 @@ import coin_black from '../assets/PNG/coin_black.png';
 import coin_color from '../assets/PNG/coin_color.png';
 import tree_black from '../assets/PNG/tree_black.png';
 import tree_color from '../assets/PNG/tree_color.png';
+import window from '../assets/PNG/window.png';
 export {
   sun,
   LOGO_main,
@@ -23,4 +24,5 @@ export {
   coin_color,
   tree_black,
   tree_color,
+  window,
 };

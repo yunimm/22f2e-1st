@@ -126,9 +126,29 @@
 
 .shot3 {
   height: 960px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .text-bg {
+    width: 660px;
+    height: 220px;
+    border: 2px solid #6a00e8;
+    background-color: black;
+    outline: 8px solid white;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 70px;
+    span {
+      font-size: 64px;
+      color: white;
+      font-weight: 600;
+      text-shadow: 2px 4px 4px #6a00e8;
+    }
+  }
 }
-
-
 
 #ufo_backbtn {
   position: absolute;
