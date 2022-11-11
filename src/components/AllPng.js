@@ -11,6 +11,16 @@ import coin_color from '../assets/PNG/coin_color.png';
 import tree_black from '../assets/PNG/tree_black.png';
 import tree_color from '../assets/PNG/tree_color.png';
 import window from '../assets/PNG/window.png';
+import spotlight from '../assets/PNG/spotlight.png';
+import box from '../assets/PNG/box.png';
+import diamond from '../assets/PNG/diamond.png';
+import elf_b from '../assets/PNG/elf_B.png';
+import sponsor_1_1 from '../';
+import sponsor_1_2 from '../assets/PNG/sponsor_1-2.png';
+import sponsor_2_1 from '../assets/PNG/sponsor_2-1.png';
+import sponsor_2_2 from '../assets/PNG/sponsor_2-2.png';
+import sponsor_3_1 from '../assets/PNG/sponsor_3-1.png';
+import sponsor_3_2 from '../assets/PNG/sponsor_3-2.png';
 export {
   sun,
   LOGO_main,
@@ -25,4 +35,8 @@ export {
   tree_black,
   tree_color,
   window,
+  spotlight,
+  box,
+  diamond,
+  elf_b,
 };

@@ -20,10 +20,8 @@
 }
 #bg {
   position: relative;
-  height: 13138px;
-  width: calc(100vw - 18px);
+  height: 13230px;
   background-image: url(../assets/SVG/bg.svg);
-  background-repeat: repeat-y;
   background-position: center;
   overflow: hidden;
 }
@@ -61,6 +59,13 @@
     right: 50%;
     transform: translateX(10%);
   }
+  #elf {
+    position: absolute;
+    bottom: 446px;
+    right: 38%;
+    transform: translateX(10%);
+    width: 182px;
+  }
 }
 
 #button_sm {
@@ -83,7 +88,7 @@
 
 #button_xl {
   position: absolute;
-  bottom: 323px;
+  bottom: 445px;
   right: 50%;
   transform: translateX(50%);
   width: 360px;
@@ -99,19 +104,43 @@
     background-repeat: no-repeat;
   }
 }
+
+#pop-type-title {
+  color: white;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 64px;
+  text-shadow: 2px 4px 4px #6a00e8;
+}
+
 .shot2 {
   height: 960px;
+  position: relative;
+  h2 {
+    margin-top: 47px;
+  }
   .ufo_wrapper {
     display: flex;
     justify-content: center;
     padding-top: 190px;
-    align-items: flex-start;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
     img {
+      position: absolute;
       display: inline-block;
       width: 154px;
+      top: 100px;
+      z-index: 50;
+    }
+    #spotlight {
+      position: absolute;
+      height: 507px;
+      width: 498.99px;
+      top: 200px;
+      z-index: 0;
     }
   }
-
   .card_wrapper {
     margin-top: 196px;
     display: flex;
@@ -166,6 +195,50 @@
   background-image: url(../assets/PNG/ufo_inside.png);
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
+  .popup_SL {
+    position: absolute;
+    left: 75px;
+    bottom: 366px;
+  }
+  .popup_SR {
+    position: absolute;
+    right: 75px;
+    bottom: 366px;
+    transform: scaleX(-1);
+  }
+  #et {
+    width: 372px;
+    position: absolute;
+    bottom: 80px;
+    right: 50%;
+  }
+  // #et:hover + #elf {
+  //   display: none;
+  // }
+  #elf {
+    width: 279px;
+    position: absolute;
+    bottom: 80px;
+    right: 30%;
+    // &:hover {
+    //   transform: scale(1.5);
+    // }
+  }
+  .cube {
+    width: 180px;
+    height: 200px;
+    position: absolute;
+    right: 33%;
+    top: 61%;
+    background-color: #4700c5;
+    opacity: 10%;
+    z-index: 50;
+    // &:hover ~ #et {
+    //   transform: scale(0.5);
+    // }
+  }
+
   .triangle {
     width: 0;
     height: 0;
@@ -177,7 +250,7 @@
 }
 .shot5 {
   height: 960px;
-  // background-color: #eeeeee;
+
   .bg-img {
     height: 424px;
     display: flex;
@@ -187,17 +260,54 @@
     background-image: url(../assets/PNG/bg_tube.png);
     background-repeat: no-repeat;
     background-position: center top;
+    h2 {
+      margin-bottom: 21px;
+    }
   }
   .card {
     width: 400px;
     height: 960px;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    img {
+      height: 490px;
+    }
+    h3 {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 64px;
+    }
+    .text-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      h4 {
+        font-size: 24px;
+        line-height: 32px;
+      }
+      h5 {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      p {
+        padding: 10px 20px;
+        color: white;
+        border-radius: 100px;
+      }
+    }
   }
 }
 
 .shot6 {
   height: 3563px;
   padding-top: 689px;
+  color: white;
+  position: relative;
   .bg-img {
     height: 2147.39px;
     background-image: url(../assets/PNG/map.png);
@@ -211,7 +321,32 @@
       transform: translateX(-50%);
       top: 0;
     }
+    .text-group-A {
+      position: absolute;
+      top: 0;
+      left: 54%;
+    }
+    h2 {
+      font-size: 40px;
+      line-height: 53px;
+    }
+    p {
+      font-size: 28px;
+      line-height: 37px;
+    }
+    .text-group-B {
+      position: absolute;
+      top: 39%;
+      left: 54%;
+    }
+    .text-group-C {
+      position: absolute;
+      top: 18%;
+      left: 22%;
+      text-align: right;
+    }
   }
+
   .blur-bg {
     height: 960px;
     background: linear-gradient(
@@ -220,23 +355,85 @@
       rgba(192, 206, 234, 0.3) 100%
     );
     backdrop-filter: blur(10px);
+    h3 {
+      font-size: 40px;
+      line-height: 53px;
+      text-align: right;
+    }
+    h4 {
+      color: #6a00e8;
+      font-size: 32px;
+      line-height: 42px;
+    }
+    p {
+      color: black;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+  .elf {
+    position: absolute;
+    bottom: 20px;
+    right: 1.5%;
   }
 }
 
 #ufo_backbtn {
   position: absolute;
-  bottom: 123px;
+  bottom: 150px;
   right: 40px;
   width: 149px;
   height: 122px;
+  z-index: 50;
+  text-align: center;
 }
 .shot-end {
   display: flex;
   flex-direction: column;
-	align-items:center;
-	// justify-content:center;
-  height: 1920px;
+  align-items: center;
   padding-top: 160px;
+  position: relative;
+  .type1 {
+    width: 360px;
+    height: 360px;
+    background-image: url(../assets/PNG/sponsor_1-1.png);
+    &:hover {
+      background-image: url(../assets/PNG/sponsor_1-2.png);
+    }
+  }
+  .type2 {
+    width: 360px;
+    height: 360px;
+    background-image: url(../assets/PNG/sponsor_2-1.png);
+    &:hover {
+      background-image: url(../assets/PNG/sponsor_2-2.png);
+    }
+  }
+  .type3 {
+    width: 360px;
+    height: 360px;
+    background-image: url(../assets/PNG/sponsor_3-1.png);
+    &:hover {
+      background-image: url(../assets/PNG/sponsor_3-2.png);
+    }
+  }
+  #elf,
+  #et {
+    display: inline-block;
+    position: absolute;
+  }
+  #et {
+    right: 17%;
+    width: 380px;
+    transform: scaleX(-1);
+    bottom: 30%;
+  }
+  #elf {
+    height: 350px;
+    left: 25%;
+    transform: scaleX(-1);
+    bottom: 30%;
+  }
 }
 #footer {
   width: 100%;
