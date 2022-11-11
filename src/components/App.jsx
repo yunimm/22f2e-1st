@@ -78,6 +78,7 @@ function App() {
 						<div className="triangle" />
 					</div>
 				</div>
+
 				{/* shot5 */}
 				<div className="shot5">
 					<div class="bg-img" />
@@ -104,10 +105,75 @@ function App() {
 							<h4>The F2E 活動網站設計</h4>
 							<button>視差滾動</button>
 							<h4># 版塊設計</h4>
-							<a href="https://">點我看更多></a>
+							<a href="https://">點我看更多</a>
 						</li>
 					</ul>
 				</div>
+
+				{/* shot6 */}
+				{/* 3page 960*3 */}
+				<div className="shot6 bg-orange-500 bg-opacity-50">
+					<div className="bg-img">
+						<img id="ufo_sm" src={ufo_sm} alt="ufo on screen" />
+						<p>報名時間10/13~10/30 截止前可修改報名組別</p>
+						<p>登錄作品10/31~11/28 依賽程登錄作品 10/31(一) UI、團體組開賽;11/7(一) 前端組開賽</p>
+						<p>額外競賽 主題豐厚獎金等著你 開賽時間 10/31(一) UI、團體組開賽 | 11/7(一) 前端組開賽</p>
+						<div className="blur-bg" />
+					</div>
+				</div>
+
+				{/* shot7 */}
+				<div className="shot7">
+					<div className="blur-bg">
+						<div className="flex flex-col justify-center items-center gap-[30px]">
+							<h2>區區修練已經無法滿足了嗎？還有比賽等著你</h2>
+
+							<div className="flex justify-center items-center">
+								<h2>評審機制</h2>
+								<div className="bg-white rounded-xl w-[1280px] h-[206px] flex justify-center items-center">
+									<div className="flex justify-center">
+										<div className="text-center">
+											<h3>初選</h3>
+											<p>將由六角學院前端、UI 評審進行 第一波篩選</p>
+										</div>
+										<div className="text-center">
+											<h3>決選</h3>
+											<p>由六角學院與贊助廠商討論，進行最後篩選，並於 12/30(五) 由評審進行直播公布名單！</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex justify-center items-center">
+								<h2>獎項</h2>
+								<div className="bg-white rounded-xl w-[1280px] h-[306px] flex justify-center items-center">
+									<div className="flex justify-center items-center">
+                    
+										<div className="text-center">
+											<h3>+ 數位獎狀 +</h3>
+											<img className="w-[172.5px]" alt="box on screen"/>
+                      <sapn>初選佳作 | 共六十位</sapn>
+										</div>
+
+										<div className="text-center">
+											<h3>+ 數位獎狀 +</h3>
+											<img className="w-[172.5px]" alt="box on screen"/>
+                      <sapn>初選佳作 | 共六十位</sapn>
+										</div>
+
+                    <div className="text-center">
+											<h3>+ 數位獎狀 +</h3>
+											<img className="w-[172.5px]" alt="box on screen"/>
+                      <sapn>初選佳作 | 共六十位</sapn>
+										</div>
+		
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				{/* end */}
 				<div className="shot-end">
 					<button type="button" id="button_xl" />

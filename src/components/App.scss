@@ -191,6 +191,43 @@
 	}
 }
 
+.shot6 {
+	height: calc(960px * 3);
+	padding-top: 689px;
+	.bg-img {
+		height: 2147.39px;
+		background-image: url(../assets/PNG/map.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+		#ufo_sm {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			top: 0;
+		}
+		.blur-bg {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			bottom: -44px;
+			height: 271px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(192, 206, 234, 0.3) 100%);
+			backdrop-filter: blur(10px);
+		}
+	}
+}
+
+.shot7 {
+	height: 960px;
+	.blur-bg {
+		height: 695px;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(192, 206, 234, 0.3) 100%);
+		backdrop-filter: blur(10px);
+		padding: 144px 260px 170px 180px;
+	}
+}
+
 #ufo_backbtn {
 	position: absolute;
 	bottom: 123px;
