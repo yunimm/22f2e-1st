@@ -15,12 +15,11 @@ import spotlight from '../assets/PNG/spotlight.png';
 import box from '../assets/PNG/box.png';
 import diamond from '../assets/PNG/diamond.png';
 import elf_b from '../assets/PNG/elf_B.png';
-import sponsor_1_1 from '../';
-import sponsor_1_2 from '../assets/PNG/sponsor_1-2.png';
-import sponsor_2_1 from '../assets/PNG/sponsor_2-1.png';
-import sponsor_2_2 from '../assets/PNG/sponsor_2-2.png';
-import sponsor_3_1 from '../assets/PNG/sponsor_3-1.png';
-import sponsor_3_2 from '../assets/PNG/sponsor_3-2.png';
+import popup_SL from '../assets/PNG/popup_SL.png';
+import popup_et from '../assets/PNG/popup-et.png';
+import popup_SR from '../assets/PNG/popup_SR.png';
+import popup_elf from '../assets/PNG/popup-elf.png';
+
 export {
   sun,
   LOGO_main,
@@ -39,4 +38,8 @@ export {
   box,
   diamond,
   elf_b,
+  popup_SL,
+  popup_et,
+  popup_SR,
+  popup_elf
 };

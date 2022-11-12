@@ -20,7 +20,7 @@
 }
 #bg {
   position: relative;
-  height: 13230px;
+  height: 9765px;
   background-image: url(../assets/SVG/BG1.svg);
   background-position: center;
   overflow: hidden;
@@ -114,7 +114,6 @@
 }
 
 .shot2 {
-  height: 960px;
   position: relative;
   h2 {
     margin-top: 47px;
@@ -174,43 +173,60 @@
 }
 
 .shot3 {
-  height: 960px;
+  height: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(../assets/PNG/ufo_inside2.png);
+  // background-image: url(../assets/PNG/ufo_inside2.png);
   background-repeat: no-repeat;
   background-position: center bottom;
-  .text-bg {
-    width: 660px;
-    height: 220px;
-    border: 2px solid #6a00e8;
-    background-color: black;
-    outline: 8px solid white;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 70px;
-    span {
-      font-size: 64px;
-      color: white;
-      font-weight: 600;
-      text-shadow: 2px 4px 4px #6a00e8;
-    }
-  }
+  // opacity: 0;
 }
 .shot4 {
-  height: 960px;
+  height: 1160px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(../assets/PNG/ufo_inside.png);
+  background-image: url(../assets/PNG/ufo_inside3.png);
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  opacity: 0;
+
+  .bg-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 1920px;
+    height: 657px;
+    background-image: url(../assets/PNG/ufo_inside2.png);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    opacity: 50;
+    .text-bg {
+      width: 660px;
+      height: 220px;
+      border: 2px solid #6a00e8;
+      background-color: black;
+      outline: 8px solid white;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 70px;
+      span {
+        font-size: 64px;
+        color: white;
+        font-weight: 600;
+        text-shadow: 2px 4px 4px #6a00e8;
+      }
+    }
+  }
+
   .popup_SL {
     position: absolute;
     left: 75px;
@@ -228,45 +244,48 @@
     bottom: 80px;
     right: 50%;
   }
-  // #et:hover + #elf {
-  //   display: none;
-  // }
+
   #elf {
     width: 279px;
     position: absolute;
     bottom: 80px;
     right: 30%;
-    // &:hover {
-    //   transform: scale(1.5);
-    // }
-  }
-  .cube {
-    width: 180px;
-    height: 200px;
-    position: absolute;
-    right: 33%;
-    top: 61%;
-    background-color: #4700c5;
-    opacity: 10%;
-    z-index: 50;
-    // &:hover ~ #et {
-    //   transform: scale(0.5);
-    // }
   }
 
-  .triangle {
-    width: 0;
-    height: 0;
-    margin-top: 20px;
-    border-style: solid;
-    border-width: 20px 0 20px 33px;
-    border-color: transparent transparent transparent black;
+  #popup_SL {
+    position: absolute;
+    left: 10%;
+    bottom: 35%;
+    z-index: 50;
+    max-width: 514px;
+  }
+  #popup_et {
+    position: absolute;
+    left: 4%;
+    bottom: 30%;
+    z-index: 50;
+    max-width: 514px;
+    display: none;
+  }
+  #popup_SR {
+    position: absolute;
+    right: 6%;
+    bottom: 23%;
+    z-index: 50;
+    max-width: 514px;
+  }
+  #popup_elf {
+    position: absolute;
+    right: 3%;
+    bottom: 20%;
+    z-index: 50;
+    max-width: 514px;
+    display: none;
   }
 }
 .shot5 {
-  height: 960px;
-
-  .bg-img {
+  // height: 960px;
+  .shot5-bg-img {
     height: 424px;
     display: flex;
     justify-content: center;
@@ -279,10 +298,10 @@
       margin-bottom: 21px;
     }
   }
+
   .card {
     width: 400px;
     height: 960px;
-    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
