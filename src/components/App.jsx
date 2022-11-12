@@ -1,4 +1,7 @@
 import './App.scss';
+import { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Header from './Header';
 import {
   sun,
@@ -26,34 +29,153 @@ import {
 import { et, elf, ufo_gif, B1, Y1, P1 } from './AllGif';
 import { ufo_sm } from './AllSvg.js';
 
+gsap.registerPlugin(ScrollTrigger);
+const Shot1UFO = ({ className }) => {
+  return <div className={'ufo' + className}></div>;
+};
+
 function App() {
+  const bg = useRef();
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.sun',
+          // endTrigger: 'shot2',
+          start: 'top',
+          end: '+=400',
+          markers: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+      // 1飛碟往上
+      tl.to('.ufo', {
+        y: () => -500, // calculate your value
+        duration: 3,
+        // ease: 'bounce.out',
+      })
+        // 2飛碟縮小
+        .to(['.ufo'], {
+          scale: () => 0.5, // calculate your value
+          duration: 2,
+          // ease: 'bounce.out',
+        })
+        // 2飛碟縮小
+        .to(
+          ['.logo', '.sun', '.cloud_sm', '.cloud_xl'],
+          {
+            scale: () => 0.7, // calculate your value
+            duration: 2,
+            // ease: 'bounce.out',
+          },
+          '<',
+        )
+        // 3飛碟縮更小
+        .to(
+          '.ufo',
+          {
+            scale: () => 0.2, // calculate your value
+            duration: 1,
+            y: () => -400,
+            // ease: 'bounce.out',
+          },
+          '<1',
+        )
+        //3背景物件飛走
+        .to(
+          ['.logo', '.sun', '.cloud_sm', '.cloud_xl'],
+          {
+            scale: () => 0.5, // calculate your value
+            y: () => -500,
+            duration: 1,
+            // ease: 'bounce.out',
+          },
+          '<1',
+        ) // 4轉場
+        .to(
+          '.ufo',
+          {
+            scale: () => 0.2,
+            duration: 2,
+            y: () => -1000,
+            // ease: 'bounce.out',
+          },
+          '<2',
+        )
+        // shot2
+        .to(
+          '.shot2-ufo',
+          {
+            scale: () => 1.2,
+            duration: 1,
+            y: () => -800,
+            // ease: 'bounce.out',
+          },
+          '<3',
+        )
+        .to(
+          '.title',
+          {
+            scale: () => 1,
+            duration: 1,
+            opacity: 1,
+          },
+          '<4',
+        );
+    }, bg); // <- Scope!
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div className="App">
-      <div id="bg">
+      <div id="bg" ref={bg}>
         <Header />
-        <div className="shot1 h-[3840px]">
-          <img id="sun" src={sun} alt="sun on screen" />
-          <img id="logo_main" src={LOGO_main} alt="logo on screen" />
-          <img id="cloud_sm" src={cloud_sm} alt="cloud on screen" />
-          <img id="cloud_xl" src={cloud_xl} alt="cloud on screen" />
-
-          <div id="ufo_wrapper">
+        <div className="shot1 h-[1500px]">
+          <div className="bg-props">
+            <img class="sun" id="sun" src={sun} alt="sun on screen" />
+            <img
+              class="logo"
+              id="logo_main"
+              src={LOGO_main}
+              alt="logo on screen"
+            />
+            <img
+              className="cloud_sm"
+              id="cloud_sm"
+              src={cloud_sm}
+              alt="cloud on screen"
+            />
+            <img
+              className="cloud_xl"
+              id="cloud_xl"
+              src={cloud_xl}
+              alt="cloud on screen"
+            />
+          </div>
+          <div className="ufo" id="ufo_wrapper">
             <div className="relative">
               <img id="ufo" src={ufo} alt="ufo on screen" />
               <img id="et" src={et} alt="et on screen" />
               <img id="elf" src={elf} alt="elf on screen" />
             </div>
           </div>
-          <button type="button" id="button_sm" />
+          <button class="shot1-btn" type="button" id="button_sm" />
         </div>
 
         {/* shot2 */}
-        <div className="shot2 bg-blue-500 bg-opacity-50">
+        <div className="shot2">
           <div className="ufo_wrapper">
-            <img id="ufo_sm" src={ufo_sm} alt="ufo on screen" />
+            <img
+              className="shot2-ufo"
+              id="ufo_sm"
+              src={ufo_sm}
+              alt="ufo on screen"
+            />
             <img id="spotlight" src={spotlight} alt="spotlight on screen" />
           </div>
-          <div className="absolute left-1/2 -translate-x-1/2 z-30">
+          <div className="title">
             <h2 id="pop-type-title">你是否也有以下困擾？</h2>
           </div>
           <div className="card_wrapper">
