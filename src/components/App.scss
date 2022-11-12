@@ -137,16 +137,23 @@
       position: absolute;
       height: 507px;
       width: 498.99px;
-      top: 200px;
+      top: -845px;
+      transform: scale(0);
       z-index: 0;
     }
   }
+
   .card_wrapper {
-    margin-top: 196px;
+    position: absolute;
+    right: -100%;
+    top: -400px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 150px;
+    .card1-2 {
+      display: none;
+    }
     .img_wrapper {
       font-size: 28px;
       color: white;

@@ -30,9 +30,6 @@ import { et, elf, ufo_gif, B1, Y1, P1 } from './AllGif';
 import { ufo_sm } from './AllSvg.js';
 
 gsap.registerPlugin(ScrollTrigger);
-const Shot1UFO = ({ className }) => {
-  return <div className={'ufo' + className}></div>;
-};
 
 function App() {
   const bg = useRef();
@@ -43,7 +40,7 @@ function App() {
           trigger: '.sun',
           // endTrigger: 'shot2',
           start: 'top',
-          end: '+=400',
+          end: '+=600',
           markers: true,
           scrub: true,
           invalidateOnRefresh: true,
@@ -52,21 +49,25 @@ function App() {
       // 1飛碟往上
       tl.to('.ufo', {
         y: () => -500, // calculate your value
-        duration: 3,
+        duration: 5,
         // ease: 'bounce.out',
       })
         // 2飛碟縮小
-        .to(['.ufo'], {
-          scale: () => 0.5, // calculate your value
-          duration: 2,
-          // ease: 'bounce.out',
-        })
+        .to(
+          '.ufo',
+          {
+            scale: () => 0.5, // calculate your value
+            duration: 10,
+            // ease: 'bounce.out',
+          },
+          '>1',
+        )
         // 2飛碟縮小
         .to(
           ['.logo', '.sun', '.cloud_sm', '.cloud_xl'],
           {
             scale: () => 0.7, // calculate your value
-            duration: 2,
+            duration: 10,
             // ease: 'bounce.out',
           },
           '<',
@@ -76,7 +77,7 @@ function App() {
           '.ufo',
           {
             scale: () => 0.2, // calculate your value
-            duration: 1,
+            duration: 10,
             y: () => -400,
             // ease: 'bounce.out',
           },
@@ -88,20 +89,20 @@ function App() {
           {
             scale: () => 0.5, // calculate your value
             y: () => -500,
-            duration: 1,
+            duration: 10,
             // ease: 'bounce.out',
           },
-          '<1',
-        ) // 4轉場
+          '>3',
+        )
+        // 4轉場
         .to(
           '.ufo',
           {
             scale: () => 0.2,
-            duration: 2,
+            duration: 10,
             y: () => -1000,
-            // ease: 'bounce.out',
           },
-          '<2',
+          '>2',
         )
         // shot2
         .to(
@@ -118,11 +119,83 @@ function App() {
           '.title',
           {
             scale: () => 1,
-            duration: 1,
+            duration: 2,
             opacity: 1,
           },
           '<4',
-        );
+        )
+        .to(
+          '.spotlight',
+          {
+            scaleY: () => 0.2,
+            scaleX: () => 0.2,
+          },
+          '<4',
+        )
+        .to(
+          '.title',
+          {
+            xPercent: 200,
+            duration: 2,
+            opacity: 1,
+          },
+          '<5',
+        )
+        .to(
+          ['.shot2-ufo', '.spotlight'],
+          {
+            duration: 1,
+            x: () => -400,
+            // ease: 'bounce.out',
+          },
+          '<6',
+        )
+        .to(
+          '.spotlight',
+          {
+            // scale: () => 1,
+            duration: 1,
+            scaleY: () => 1,
+            scaleX: () => 1,
+            y: () => 250,
+          },
+          '<6',
+        )
+        .to(
+          '.card_wrapper',
+          {
+            x: () => -2170,
+            duration: 3,
+          },
+          '<6',
+        )
+        .to(
+          '.spotlight',
+          {
+            duration: 1,
+            scaleY: () => 0.9,
+          },
+          '<7',
+        )
+        .set('.card1-1', { attr: { src: q_color } })
+        .to(
+          '.ufo_wrapper',
+          {
+            x: () => 450,
+            duration: 2,
+          },
+          '<8',
+        )
+        .set('.card2-1', { attr: { src: coin_color } })
+        .to(
+          '.ufo_wrapper',
+          {
+            x: () => 920,
+            duration: 2,
+          },
+          '<9',
+        )
+        .set('.card3-1', { attr: { src: tree_color } });
     }, bg); // <- Scope!
 
     return () => ctx.revert();
@@ -173,7 +246,12 @@ function App() {
               src={ufo_sm}
               alt="ufo on screen"
             />
-            <img id="spotlight" src={spotlight} alt="spotlight on screen" />
+            <img
+              className="spotlight"
+              id="spotlight"
+              src={spotlight}
+              alt="spotlight on screen"
+            />
           </div>
           <div className="title">
             <h2 id="pop-type-title">你是否也有以下困擾？</h2>
@@ -181,18 +259,15 @@ function App() {
           <div className="card_wrapper">
             {/*  FIXME:預設為黑色*/}
             <div className="img_wrapper">
-              <img src={q_black} alt="question img on screen" />
-              {/* <img src={q_color} alt="question img on screen" /> */}
+              <img class="card1-1" src={q_black} alt="question img on screen" />
               <p>羨慕別人的酷酷網頁動畫？</p>
             </div>
             <div className="img_wrapper">
-              <img src={coin_black} alt="coin img on screen" />
-              {/* <img src={coin_color} alt="coin img on screen" /> */}
+              <img class="card2-1" src={coin_black} alt="coin img on screen" />
               <p>滿足不了同事的許願？</p>
             </div>
             <div className="img_wrapper">
-              <img src={tree_black} alt="tree img on screen" />
-              {/* <img src={tree_color} alt="tree img on screen" /> */}
+              <img class="card3-1" src={tree_black} alt="tree img on screen" />
               <p>動畫技能樹太雜無從下手？</p>
             </div>
           </div>
