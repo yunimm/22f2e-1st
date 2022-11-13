@@ -20,7 +20,7 @@
 }
 #bg {
   position: relative;
-  height: 9765px;
+  height: 8700px;
   background-image: url(../assets/SVG/BG1.svg);
   background-position: center;
   overflow: hidden;
@@ -284,7 +284,6 @@
   }
 }
 .shot5 {
-  // height: 960px;
   .shot5-bg-img {
     height: 424px;
     display: flex;
@@ -298,7 +297,20 @@
       margin-bottom: 21px;
     }
   }
-
+  .shot5-bg-map {
+    height: 2147.39px;
+    background-image: url(../assets/PNG/map.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    position: relative;
+    // padding-top: 1842px;
+  }
+  .card_bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeeee;
+  }
   .card {
     width: 400px;
     height: 960px;
@@ -306,6 +318,11 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    background-color: white;
+    z-index: 999;
+    .card2nd {
+      background-color: '#EEEEEE';
+    }
     img {
       height: 490px;
     }
@@ -336,29 +353,34 @@
     }
   }
 }
-
+.shot6_position {
+  position: absolute;
+  top: 52%;
+  opacity: 0;
+}
+#map_ufo_sm {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -12%;
+  z-index: 50;
+  opacity: 1;
+}
 .shot6 {
-  height: 3563px;
-  padding-top: 689px;
   color: white;
   position: relative;
-  .bg-img {
+  .shot6-bg-img {
     height: 2147.39px;
     background-image: url(../assets/PNG/map.png);
     background-repeat: no-repeat;
     background-position: center;
-    position: relative;
     padding-top: 1842px;
-    #ufo_sm {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 0;
-    }
+
     .text-group-A {
       position: absolute;
       top: 0;
-      left: 54%;
+      left: 45%;
+      display: none;
     }
     h2 {
       font-size: 40px;
@@ -371,13 +393,15 @@
     .text-group-B {
       position: absolute;
       top: 39%;
-      left: 54%;
+      left: 40%;
+      display: none;
     }
     .text-group-C {
       position: absolute;
       top: 18%;
-      left: 22%;
+      left: 15%;
       text-align: right;
+      display: none;
     }
   }
 
@@ -414,7 +438,7 @@
 
 #ufo_backbtn {
   position: absolute;
-  bottom: 150px;
+  bottom: 20%;
   right: 40px;
   width: 149px;
   height: 122px;
@@ -425,8 +449,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 160px;
-  position: relative;
+  // padding-top: 1500px;
+  position: absolute;
+  bottom: -2%;
+
   .type1 {
     width: 360px;
     height: 360px;

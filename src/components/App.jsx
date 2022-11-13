@@ -67,12 +67,46 @@ function App() {
         scrollTrigger: {
           trigger: '.card1st',
           start: 'top 50%',
-          end: '+=500',
-          markers: true,
+          end: '+=400',
+          // markers: true,
           scrub: true,
           invalidateOnRefresh: true,
         },
       });
+      // 關卡卡片飛走
+      let tl5 = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.shot5_p1',
+          start: 'top 15%',
+          end: '+=100',
+          // markers: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+      // 關卡背景顏色
+      let tl5_2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.shot5_p1',
+          start: 'top 15%',
+          end: '+=500',
+          // markers: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+      // shot6地圖位移
+      let tl6 = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.shot6-ufo',
+          start: 'top 85%',
+          end: '+=450',
+          // markers: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+
       // 1飛碟往上
       tl.to('.ufo', {
         y: () => -500, // calculate your value
@@ -341,59 +375,106 @@ function App() {
         );
 
       tl4
+        .set('.shot5_p1', { attr: { src: P2 } }, '+=3')
 
-        // light1
+        .set('.shot5_Y1', { attr: { src: Y2 } }, '+=3')
+
+        .set('.shot5_B1', { attr: { src: B2 } }, '+=3');
+
+      // 卡片飛走
+      tl5
         .to('.card1st', {
-          backgroundColor: 'white',
+          duration: 1,
+          y: () => -1500,
         })
-        .set('.shot5_p1', { attr: { src: P2 } })
-        // light2
         .to(
           '.card2nd',
           {
-            backgroundColor: '#EEEEEE',
+            duration: 5,
+            y: () => 1500,
           },
-          '+=3',
+          '+=5',
         )
-        .set('.shot5_Y1', { attr: { src: Y2 } })
-        // light3
         .to(
           '.card3rd',
           {
-            backgroundColor: 'white',
+            duration: 5,
+            display: 'none',
+            y: () => -1500,
           },
-          '+=3',
+          '+=5',
         )
-        .set('.shot5_B1', { attr: { src: B2 } });
-      // FIXME:用新的時間軸設置飛走的觸發條件
-      // 卡片飛走
-      // .to(
-      //   '.card1st',
-      //   {
-      //     duration: 3,
-      //     y: () => -1500,
-      //   },
-      //   '+=10',
-      // )
-      // .to(
-      //   '.card2nd',
-      //   {
-      //     duration: 3,
-      //     y: () => 1500,
-      //   },
-      //   '+=10',
-      // )
-      // .to(
-      //   '.card3rd',
-      //   {
-      //     duration: 3,
-      //     y: () => -1500,
-      //   },
-      //   '+=10',
-      // )
-      // // 背景透明
-      // .to('.card_bg', { duration: 10, opacity: 0 }, '-=1');
-      // .to('.shot6_position', { duration: 1, y: () => -1500 }, '<');
+        .to('.card1st', {
+          opacity: () => 0,
+        })
+        .to('.card2nd', {
+          opacity: () => 0,
+        })
+        .to('.card3rd', {
+          opacity: () => 0,
+        });
+      // 背景透明
+
+      tl5_2
+        .to('.card_bg', {
+          duration: 2,
+          backgroundColor: () => 'rgba(0, 0, 0, 0)',
+        })
+        .to('.shot6_position', { duration: 1, opacity: 1 }, '<');
+
+      tl6
+        .to('.shot6-ufo', {
+          duration: 1,
+          // y: () => -100,
+          // opacity: 1,
+        })
+        .to('.shot6_position', {
+          duration: 1,
+          y: () => -300,
+        })
+        .to(
+          '.text-group-A',
+          {
+            duration: 1,
+            x: () => 200,
+            display: 'block',
+          },
+          '+=.5',
+        )
+        .to(
+          '.shot6_position',
+          {
+            duration: 5,
+            y: () => -690,
+          },
+          '+=5',
+        )
+        .to(
+          '.text-group-C',
+          {
+            duration: 1,
+            display: 'block',
+            left: 200,
+          },
+          '+=.5',
+        )
+        .to(
+          '.shot6_position',
+          {
+            duration: 5,
+            y: () => -1150,
+          },
+          '+=10',
+        )
+        .to(
+          '.text-group-B',
+          {
+            duration: 1,
+            display: 'block',
+            left: 1050,
+          },
+          '+=.5',
+        );
     }, bg);
 
     return () => ctx.revert();
@@ -434,7 +515,6 @@ function App() {
           </div>
           <button class="shot1-btn" type="button" id="button_sm" />
         </div>
-
         {/* shot2 */}
         <div className="shot2">
           <div className="ufo_wrapper">
@@ -455,7 +535,6 @@ function App() {
             <h2 id="pop-type-title">你是否也有以下困擾？</h2>
           </div>
           <div className="card_wrapper">
-            {/*  FIXME:預設為黑色*/}
             <div className="img_wrapper">
               <img class="card1-1" src={q_black} alt="question img on screen" />
               <p>羨慕別人的酷酷網頁動畫？</p>
@@ -470,10 +549,8 @@ function App() {
             </div>
           </div>
         </div>
-
         {/* shot3 */}
         <div className="shot3"></div>
-
         {/* shot4 */}
         <div className="shot4_5">
           <div className="shot4">
@@ -524,7 +601,7 @@ function App() {
             <div class="shot5-bg-img">
               <h2 id="pop-type-title">年度最強組合 三大主題來襲</h2>
             </div>
-            <ul className="card_bg flex justify-center items-center bg-[#eeeeee]">
+            <ul className="card_bg">
               <li className="card1st card" id="question">
                 <h3>Week1</h3>
 
@@ -565,194 +642,207 @@ function App() {
               </li>
             </ul>
           </div>
-        </div>
-        {/* shot6+7 */}
-        {/* 3page 960*2 + 1643 */}
-        <div className="shot6_position">
-          <div className="shot6" id="info">
-            <div className="bg-img">
-              <img id="ufo_sm" src={ufo_sm} alt="ufo on screen" />
-              <div className="text-group-A">
-                <h2 className="text-[#EA3BE5] inline-block">報</h2>
-                <h2 className="inline-block">名時間10/13~10/30</h2>
-                <p>截止前可修改報名組別</p>
-              </div>
+          <div className="relative h-[750px]">
+            <img
+              className="shot6-ufo"
+              id="map_ufo_sm"
+              src={ufo_sm}
+              alt="ufo on screen"
+            />
+          </div>
+          <div className="shot6_position">
+            <div className="shot6" id="info">
+              <div className="shot6-bg-img">
+                <div className="text-group-A">
+                  <h2 className="text-[#EA3BE5] inline-block">報</h2>
+                  <h2 className="inline-block">名時間10/13~10/30</h2>
+                  <p>截止前可修改報名組別</p>
+                </div>
 
-              <p></p>
-              <div className="text-group-C">
-                <h2 className="text-[#FFCC62] inline-block">登</h2>
-                <h2 className="inline-block">錄作品10/31~11/28</h2>
-                <p>
-                  依賽程登錄作品
-                  <br />
-                  10/31(一) UI、團體組開賽;11/7(一) 前端組開賽
-                </p>
-              </div>
-              <div className="text-group-B">
-                <h2 className="text-[#2DC9FC] inline-block">額</h2>
-                <h2 className="inline-block">外競賽</h2>
-                <p>
-                  主題豐厚獎金等著你
-                  <br />
-                  開賽時間
-                  <br />
-                  10/31(一) UI、團體組開賽 | 11/7(一) 前端組開賽
-                </p>
-              </div>
-              <div className="blur-bg">
-                <div className="flex flex-col justify-center items-center gap-[30px] pt-[144px]">
-                  <h2 id="pop-type-title">
-                    區區修練已經無法滿足了嗎？還有比賽等著你
-                  </h2>
+                <p></p>
+                <div className="text-group-C">
+                  <h2 className="text-[#FFCC62] inline-block">登</h2>
+                  <h2 className="inline-block">錄作品10/31~11/28</h2>
+                  <p>
+                    依賽程登錄作品
+                    <br />
+                    10/31(一) UI、團體組開賽;11/7(一) 前端組開賽
+                  </p>
+                </div>
+                <div className="text-group-B">
+                  <h2 className="text-[#2DC9FC] inline-block">額</h2>
+                  <h2 className="inline-block">外競賽</h2>
+                  <p>
+                    主題豐厚獎金等著你
+                    <br />
+                    開賽時間
+                    <br />
+                    10/31(一) UI、團體組開賽 | 11/7(一) 前端組開賽
+                  </p>
+                </div>
+                <div className="blur-bg">
+                  <div className="flex flex-col justify-center items-center gap-[30px] pt-[144px]">
+                    <h2 id="pop-type-title">
+                      區區修練已經無法滿足了嗎？還有比賽等著你
+                    </h2>
 
-                  <div className="flex justify-between items-center w-[1480px]">
-                    <h3>評審機制</h3>
-                    <div className=" bg-white rounded-xl w-[1280px] h-[206px] flex justify-center items-center gap-20">
-                      {/* <div className="flex justify-center border"> */}
+                    <div className="flex justify-between items-center w-[1480px]">
+                      <h3>評審機制</h3>
+                      <div className=" bg-white rounded-xl w-[1280px] h-[206px] flex justify-center items-center gap-20">
+                        {/* <div className="flex justify-center border"> */}
 
-                      <div className="flex justify-center items-center flex-col gap-8 text-center p-10">
-                        <h4>初選</h4>
-                        <p>
-                          將由六角學院前端、UI 評審進行
-                          <br />
-                          第一波篩選
-                        </p>
-                      </div>
-                      <div className="w-[3px] h-[124px] bg-[#B6B6B6]"></div>
-                      <div className="flex justify-center">
                         <div className="flex justify-center items-center flex-col gap-8 text-center p-10">
-                          <h4>決選</h4>
+                          <h4>初選</h4>
                           <p>
-                            由六角學院與贊助廠商討論，進行最後篩選，
+                            將由六角學院前端、UI 評審進行
                             <br />
-                            並於 12/30(五) 由評審進行直播公布名單！
+                            第一波篩選
                           </p>
                         </div>
-                      </div>
-
-                      {/* </div> */}
-                    </div>
-                  </div>
-
-                  <div
-                    id="crown"
-                    className="flex justify-between items-center w-[1480px]"
-                  >
-                    <h3>獎項</h3>
-                    <div className="bg-white rounded-xl w-[1280px] h-[306px] flex justify-center items-center">
-                      <div className="flex justify-center items-center gap-12">
-                        <div className="text-center flex justify-center items-center flex-col gap-3">
-                          <div>
-                            <span className="text-[32px] text-[#EA3BE5]">
-                              +
-                            </span>
-                            <span className="text-[32px] text-[#6a00e8] font-bold">
-                              數位獎狀
-                            </span>
-                            <span className="text-[32px] text-[#EA3BE5]">
-                              +
-                            </span>
-                          </div>
-                          <img
-                            src={box}
-                            className="w-[172.5px]"
-                            alt="box on screen"
-                          />
-                          <div>
-                            <span className="text-[#EA3BE5] text-2xl">初 </span>
-                            <span className="text-black text-2xl">
-                              選佳作 | 共六十位
-                            </span>
+                        <div className="w-[3px] h-[124px] bg-[#B6B6B6]"></div>
+                        <div className="flex justify-center">
+                          <div className="flex justify-center items-center flex-col gap-8 text-center p-10">
+                            <h4>決選</h4>
+                            <p>
+                              由六角學院與贊助廠商討論，進行最後篩選，
+                              <br />
+                              並於 12/30(五) 由評審進行直播公布名單！
+                            </p>
                           </div>
                         </div>
 
-                        <img src={diamond} alt="diamond on screen" />
-
-                        <div className="text-center flex justify-center items-center flex-col gap-3">
-                          <div>
-                            <span className="text-[32px] text-[#EA3BE5]">
-                              +
-                            </span>
-                            <span className="text-[32px] text-[#6a00e8] font-bold">
-                              數位獎狀
-                            </span>
-                            <span className="text-[32px] text-[#EA3BE5]">
-                              +
-                            </span>
-                          </div>
-                          <img
-                            src={box}
-                            className="w-[172.5px]"
-                            alt="box on screen"
-                          />
-                          <div>
-                            <span className="text-[#EA3BE5] text-2xl">初 </span>
-                            <span className="text-black text-2xl">
-                              選佳作 | 共六十位
-                            </span>
-                          </div>
-                        </div>
-
-                        <img src={diamond} alt="diamond on screen" />
-
-                        <div className="text-center flex justify-center items-center flex-col gap-3">
-                          <div>
-                            <span className="text-[32px] text-[#EA3BE5]">
-                              +
-                            </span>
-                            <span className="text-[32px] text-[#6a00e8] font-bold">
-                              數位獎狀
-                            </span>
-                            <span className="text-[32px] text-[#EA3BE5]">
-                              +
-                            </span>
-                          </div>
-                          <img
-                            src={box}
-                            className="w-[172.5px]"
-                            alt="box on screen"
-                          />
-                          <div>
-                            <span className="text-[#EA3BE5] text-2xl">初 </span>
-                            <span className="text-black text-2xl">
-                              選佳作 | 共六十位
-                            </span>
-                          </div>
-                        </div>
+                        {/* </div> */}
                       </div>
                     </div>
-                  </div>
 
-                  <div className="min-w-[1920px] relative">
-                    <img className="elf" src={elf_b} alt="elf on screen" />
+                    <div
+                      id="crown"
+                      className="flex justify-between items-center w-[1480px]"
+                    >
+                      <h3>獎項</h3>
+                      <div className="bg-white rounded-xl w-[1280px] h-[306px] flex justify-center items-center">
+                        <div className="flex justify-center items-center gap-12">
+                          <div className="text-center flex justify-center items-center flex-col gap-3">
+                            <div>
+                              <span className="text-[32px] text-[#EA3BE5]">
+                                +
+                              </span>
+                              <span className="text-[32px] text-[#6a00e8] font-bold">
+                                數位獎狀
+                              </span>
+                              <span className="text-[32px] text-[#EA3BE5]">
+                                +
+                              </span>
+                            </div>
+                            <img
+                              src={box}
+                              className="w-[172.5px]"
+                              alt="box on screen"
+                            />
+                            <div>
+                              <span className="text-[#EA3BE5] text-2xl">
+                                初{' '}
+                              </span>
+                              <span className="text-black text-2xl">
+                                選佳作 | 共六十位
+                              </span>
+                            </div>
+                          </div>
+
+                          <img src={diamond} alt="diamond on screen" />
+
+                          <div className="text-center flex justify-center items-center flex-col gap-3">
+                            <div>
+                              <span className="text-[32px] text-[#EA3BE5]">
+                                +
+                              </span>
+                              <span className="text-[32px] text-[#6a00e8] font-bold">
+                                數位獎狀
+                              </span>
+                              <span className="text-[32px] text-[#EA3BE5]">
+                                +
+                              </span>
+                            </div>
+                            <img
+                              src={box}
+                              className="w-[172.5px]"
+                              alt="box on screen"
+                            />
+                            <div>
+                              <span className="text-[#EA3BE5] text-2xl">
+                                初{' '}
+                              </span>
+                              <span className="text-black text-2xl">
+                                選佳作 | 共六十位
+                              </span>
+                            </div>
+                          </div>
+
+                          <img src={diamond} alt="diamond on screen" />
+
+                          <div className="text-center flex justify-center items-center flex-col gap-3">
+                            <div>
+                              <span className="text-[32px] text-[#EA3BE5]">
+                                +
+                              </span>
+                              <span className="text-[32px] text-[#6a00e8] font-bold">
+                                數位獎狀
+                              </span>
+                              <span className="text-[32px] text-[#EA3BE5]">
+                                +
+                              </span>
+                            </div>
+                            <img
+                              src={box}
+                              className="w-[172.5px]"
+                              alt="box on screen"
+                            />
+                            <div>
+                              <span className="text-[#EA3BE5] text-2xl">
+                                初
+                              </span>
+                              <span className="text-black text-2xl">
+                                選佳作 | 共六十位
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="min-w-[1920px] relative">
+                      <img className="elf" src={elf_b} alt="elf on screen" />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* end */}
-          <div className="shot-end">
-            <h2 id="pop-type-title">贊助單位</h2>
-            <ul className="flex justify-center items-center gap-14 mt-[100px]">
-              <button className="type1" />
-              <button className="type2" />
-              <button className="type3" />
-            </ul>
-            <div className="min-w-[1920px] h-[1200px] relative">
-              <img id="elf" src={elf} alt="elf on screen" />
-              <button type="button" id="button_xl" />
-              <img id="et" src={et} alt="et on screen" />
-            </div>
-            <a href="#bg" id="ufo_backbtn" className="w-[149px] h-[122px]">
-              <img src={ufo_sm} alt="ufo on screen" />
-              <span className="text-xl text-white">BACK TO TOP</span>
-            </a>
-          </div>
-          <footer id="footer">
-            <span>Copyright ©2022 炙燒三重奏.All rights reserved.</span>
-          </footer>
         </div>
+        {/* end */}
+        <div className="shot-end">
+          <h2 id="pop-type-title">贊助單位</h2>
+          <div className="flex justify-center items-center gap-14 mt-[100px]">
+            <button className="type1" />
+            <button className="type2" />
+            <button className="type3" />
+          </div>
+
+          <div className="min-w-[1920px] h-[1200px] relative">
+            <img id="elf" src={elf} alt="elf on screen" />
+            <button type="button" id="button_xl" />
+            <img id="et" src={et} alt="et on screen" />
+          </div>
+
+          <a href="#bg" id="ufo_backbtn" className="w-[149px] h-[122px]">
+            <img src={ufo_sm} alt="ufo on screen" />
+            <span className="text-xl text-white">BACK TO TOP</span>
+          </a>
+        </div>
+        <footer id="footer">
+          <span>Copyright ©2022 炙燒三重奏.All rights reserved.</span>
+        </footer>{' '}
+        */
       </div>
     </div>
   );
