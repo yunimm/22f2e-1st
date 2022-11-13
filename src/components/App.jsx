@@ -1,7 +1,10 @@
 import './App.scss';
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import lottie from 'lottie-web';
+import elfData from '../json/elf.json';
+import etData from '../json/et.json';
 import Header from './Header';
 import {
   sun,
@@ -24,13 +27,14 @@ import {
   popup_SR,
   popup_elf,
 } from './AllPng';
-import { et, elf, ufo_gif, B1, B2, B3, Y1, Y2, Y3, P1, P2, P3 } from './AllGif';
+import { et, elf, ufo_gif, B1, B2, Y1, Y2, P1, P2 } from './AllGif';
 import { ufo_sm } from './AllSvg.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const bg = useRef();
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       let tl = gsap.timeline({
@@ -99,9 +103,9 @@ function App() {
       let tl6 = gsap.timeline({
         scrollTrigger: {
           trigger: '.shot6-ufo',
-          start: 'top 85%',
+          start: 'top 55%',
           end: '+=450',
-          // markers: true,
+          markers: true,
           scrub: true,
           invalidateOnRefresh: true,
         },
@@ -479,20 +483,67 @@ function App() {
 
     return () => ctx.revert();
   }, []);
+  useEffect(() => {
+    const elf_shot4 = lottie.loadAnimation({
+      container: document.querySelector('.elf_shot4_json'),
+      animationData: elfData,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+    });
+    return () => elf_shot4.destroy();
+  }, []);
+
+  useEffect(() => {
+    const et_shot4 = lottie.loadAnimation({
+      container: document.querySelector('.et_shot4_json'),
+      animationData: etData,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+    });
+    return () => et_shot4.destroy();
+  }, []);
+
+  useEffect(() => {
+    const elf_end = lottie.loadAnimation({
+      container: document.querySelector('.elf_end_json'),
+      animationData: elfData,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+    });
+    return () => elf_end.destroy();
+  }, []);
+
+  useEffect(() => {
+    const et_end = lottie.loadAnimation({
+      container: document.querySelector('.et_end_json'),
+      animationData: etData,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+    });
+    return () => et_end.destroy();
+  }, []);
 
   return (
     <div className="App">
       <div id="bg" ref={bg}>
-        <Header />
+        <div className="h-[300px]">
+          <Header />
+        </div>
         <div className="shot1 h-[1500px]">
           <div className="bg-props">
             <img class="sun" id="sun" src={sun} alt="sun on screen" />
-            <img
-              class="logo"
-              id="logo_main"
-              src={LOGO_main}
-              alt="logo on screen"
-            />
+            <a href="#bg">
+              <img
+                class="logo"
+                id="logo_main"
+                src={LOGO_main}
+                alt="logo on screen"
+              />
+            </a>
             <img
               className="cloud_sm"
               id="cloud_sm"
@@ -513,7 +564,9 @@ function App() {
               <img id="elf" src={elf} alt="elf on screen" />
             </div>
           </div>
-          <button class="shot1-btn" type="button" id="button_sm" />
+          <a href="https://2022.thef2e.com/">
+            <button class="shot1-btn" type="button" id="button_sm" />
+          </a>
         </div>
         {/* shot2 */}
         <div className="shot2">
@@ -586,13 +639,8 @@ function App() {
 
             <div className="ch">
               <div className="cube"></div>
-              <img className="shot4_et" id="et" src={et} alt="et on screen" />
-              <img
-                className="shot4_elf"
-                id="elf"
-                src={elf}
-                alt="elf on screen"
-              />
+              <div id="et" className="et_shot4_json shot4_et" />
+              <div id="elf" className="elf_shot4_json shot4_elf" />
             </div>
           </div>
 
@@ -741,7 +789,7 @@ function App() {
                             />
                             <div>
                               <span className="text-[#EA3BE5] text-2xl">
-                                初{' '}
+                                初
                               </span>
                               <span className="text-black text-2xl">
                                 選佳作 | 共六十位
@@ -829,9 +877,11 @@ function App() {
           </div>
 
           <div className="min-w-[1920px] h-[1200px] relative">
-            <img id="elf" src={elf} alt="elf on screen" />
-            <button type="button" id="button_xl" />
-            <img id="et" src={et} alt="et on screen" />
+            <div className="elf_end_json" id="elf" />
+            <a href="https://2022.thef2e.com/">
+              <button type="button" id="button_xl" />
+            </a>
+            <div className="et_end_json" id="et" />
           </div>
 
           <a href="#bg" id="ufo_backbtn" className="w-[149px] h-[122px]">
@@ -841,8 +891,7 @@ function App() {
         </div>
         <footer id="footer">
           <span>Copyright ©2022 炙燒三重奏.All rights reserved.</span>
-        </footer>{' '}
-        */
+        </footer>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
+import React from 'react';
 import { LOGO_header } from './AllPng';
-const Header = () => {
+const Header = ({ goTo }) => {
   return (
     <div className="px-10 flex items-center justify-between" id="header">
       <img className="" src={LOGO_header} alt="logo on screen" />

@@ -69,11 +69,12 @@
 }
 
 #button_sm {
-  position: absolute;
+  position: fixed;
   top: 855px;
   right: 30px;
   width: 180px;
   height: 75px;
+  z-index: 999;
   background-image: url(../assets//PNG/btn_sm_1.png);
   background-repeat: no-repeat;
   &:hover {
@@ -355,7 +356,7 @@
 }
 .shot6_position {
   position: absolute;
-  top: 52%;
+  top: 54.5%;
   opacity: 0;
 }
 #map_ufo_sm {
@@ -439,7 +440,7 @@
 #ufo_backbtn {
   position: absolute;
   bottom: 20%;
-  right: 40px;
+  right: 59px;
   width: 149px;
   height: 122px;
   z-index: 50;
@@ -449,7 +450,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // padding-top: 1500px;
   position: absolute;
   bottom: -2%;
 
