@@ -37,11 +37,21 @@ function App() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      let tl = gsap.timeline({
+      let tl_shot1 = gsap.timeline({
         scrollTrigger: {
           trigger: '.sun',
-          start: 'top',
-          end: '+=1200',
+          start: 'top 10%',
+          end: '+=500',
+          // markers: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.ufo',
+          start: 'top 5%',
+          end: '+=500',
           // markers: true,
           scrub: true,
           invalidateOnRefresh: true,
@@ -50,7 +60,7 @@ function App() {
       let tl2 = gsap.timeline({
         scrollTrigger: {
           trigger: '.shot4',
-          start: 'top 20%',
+          start: 'top 36%',
           end: '+=900',
           // markers: true,
           scrub: true,
@@ -105,97 +115,104 @@ function App() {
           trigger: '.shot6-ufo',
           start: 'top 55%',
           end: '+=450',
-          markers: true,
+          // markers: true,
           scrub: true,
           invalidateOnRefresh: true,
         },
       });
 
       // 1飛碟往上
-      tl.to('.ufo', {
-        y: () => -500, // calculate your value
-        duration: 1,
-        // ease: 'bounce.out',
-      })
-        // 2飛碟縮小
+      tl_shot1
+        .to('.ufo', {
+          y: () => -500,
+          duration: 2,
+        })
         .to(
           '.ufo',
           {
-            scale: () => 0.5, // calculate your value
+            scale: () => 0.5,
             duration: 1,
-            // ease: 'bounce.out',
           },
-          '>1',
+          '<+=3',
         )
-        // 2飛碟縮小
         .to(
           ['.logo', '.sun', '.cloud_sm', '.cloud_xl'],
           {
-            scale: () => 0.7, // calculate your value
+            scale: () => 0.7,
+            y: () => 100,
             duration: 1,
-            // ease: 'bounce.out',
           },
           '<',
         )
-        // 3飛碟縮更小
         .to(
           '.ufo',
           {
-            scale: () => 0.2, // calculate your value
-            duration: 1,
-            y: () => -500,
-            // ease: 'bounce.out',
+            scale: () => 0.1,
+            y: () => 0,
+            duration: 2,
           },
-          '<1',
+          '+=3',
         )
-        //3背景物件飛走
         .to(
           ['.logo', '.sun', '.cloud_sm', '.cloud_xl'],
           {
-            scale: () => 0.5, // calculate your value
-            y: () => -500,
-            duration: 1,
-            // ease: 'bounce.out',
+            scale: () => 0.5,
+            y: () => 200,
+            duration: 3,
           },
-          '>3',
+          '<',
         )
-        // 4轉場
         .to(
-          '.ufo',
+          ['.ufo', '.logo', '.sun', '.cloud_sm', '.cloud_xl'],
           {
-            scale: () => 0.2,
-            duration: 1,
-            y: () => -1000,
+            scale: () => 0.1,
+            y: () => -100,
+            duration: 2,
           },
-          '>2',
+          '+=3',
         )
-        // shot2
+        .to('.ufo', {
+          scale: () => 0.1,
+          y: () => -900,
+          duration: 1,
+        });
+
+      tl.to(
+        '.shot2-ufo',
+        {
+          scale: () => 1.2,
+          duration: 1,
+          y: () => -1000,
+        },
+        '<',
+      )
         .to(
           '.shot2-ufo',
           {
-            scale: () => 1.2,
+            scale: () => 1,
             duration: 1,
-            y: () => -800,
-            // ease: 'bounce.out',
+            y: () => -1000,
           },
-          '<3',
+          '+=2',
         )
         .to(
           '.title',
           {
             scale: () => 1,
+            y: () => -650,
             duration: 1,
             opacity: 1,
           },
-          '<4',
+          '<',
         )
         .to(
           '.spotlight',
           {
+            y: () => -200,
             scaleY: () => 0.2,
             scaleX: () => 0.2,
           },
-          '<4',
+          '<',
         )
         .to(
           '.title',
@@ -204,35 +221,30 @@ function App() {
             duration: 1,
             opacity: 1,
           },
-          '<5',
+          '+=2',
         )
-        .to(
-          ['.shot2-ufo', '.spotlight'],
-          {
-            duration: 1,
-            x: () => -400,
-            // ease: 'bounce.out',
-          },
-          '<6',
-        )
+        .to(['.shot2-ufo', '.spotlight'], {
+          duration: 1,
+          x: () => -400,
+        })
         .to(
           '.spotlight',
           {
-            // scale: () => 1,
             duration: 1,
             scaleY: () => 1,
             scaleX: () => 1,
-            y: () => 250,
+            y: () => 0,
           },
-          '<6',
+          '+=2',
         )
         .to(
           '.card_wrapper',
           {
             x: () => -2170,
+            y: () => 150,
             duration: 1,
           },
-          '<6',
+          '+=2',
         )
         .to(
           '.spotlight',
@@ -265,15 +277,15 @@ function App() {
           '.ufo_wrapper',
           {
             x: () => 1800,
-            duration: 1,
+            duration: 5,
           },
-          '<10',
+          '+=5',
         )
         .to(
           '.card_wrapper',
           {
             x: () => -4500,
-            duration: 1,
+            duration: 5,
           },
           '<',
         )
@@ -281,38 +293,34 @@ function App() {
         .to(
           '.shot2-ufo',
           {
-            duration: 4,
+            duration: 5,
             x: () => -1800,
-            y: () => 1200,
+            y: () => 1000,
             scale: 20,
             filter: 'blur(1px)',
-            // ease: 'bounce.out',
           },
-          '<11',
+          '+=5',
         )
         .to(
           '.shot2-ufo',
           {
-            duration: 3,
+            duration: 5,
             opacity: 0,
-            // ease: 'bounce.out',
           },
-          '<12',
+          '+=5',
         )
         .to(
           '.shot4',
           {
             duration: 1,
             opacity: 1,
-            // ease: 'bounce.out',
           },
           '<',
         );
 
       tl2.to('.bg-2', {
         y: () => -3000,
-        duration: 2,
-        // ease: 'bounce.out',
+        duration: 1,
       });
 
       tl3
