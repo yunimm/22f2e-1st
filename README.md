@@ -10,6 +10,7 @@ Demo: https://yunimm.github.io/22f2e_1st/
 - GSAP 
 - TailwindCSS 
 - SCSS 
+- lottie-web
 ### 專案資料夾說明
 - src - assets 專案使用到的圖片 GIF/PNG/SVG 依照檔案類型分類
 - src - components 元件
